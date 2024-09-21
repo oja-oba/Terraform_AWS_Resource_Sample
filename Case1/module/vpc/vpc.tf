@@ -18,7 +18,7 @@ resource "aws_subnet" "custom_vpc_public_subnet_1" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-public-subnet-1"
+        Name = "${var.ENVIRONMENT}-custom-vpc-public-subnet-1"
     }
   
 }
@@ -31,7 +31,7 @@ resource "aws_subnet" "custom_vpc_public_subnet_2" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-public-subnet-2"
+        Name = "${var.ENVIRONMENT}-custom-vpc-public-subnet-2"
     }
   
 }
@@ -45,7 +45,7 @@ resource "aws_subnet" "custom_vpc_private_subnet_1" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-private-subnet-1"
+        Name = "${var.ENVIRONMENT}-custom-vpc-private-subnet-1"
     }
   
 }
@@ -58,7 +58,7 @@ resource "aws_subnet" "custom_vpc_private_subnet_2" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-private-subnet-2"
+        Name = "${var.ENVIRONMENT}-custom-vpc-private-subnet-2"
     }
   
 }
@@ -68,7 +68,7 @@ resource "aws_internet_gateway" "custom_vpc-igw" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-igw"
+        Name = "${var.ENVIRONMENT}-custom-vpc-igw"
     }
   
 }

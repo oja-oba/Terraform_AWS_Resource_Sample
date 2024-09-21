@@ -1,2 +1,4 @@
 levelup_key.pub
 levelup_key
+.terraform.lock.hcl
+.terraform/
