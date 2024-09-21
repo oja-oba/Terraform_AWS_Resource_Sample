@@ -85,7 +85,7 @@ resource "aws_nat_gateway" "custom_vpc-nat-gateway" {
 
   tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-nat-gateway"
+        Name = "${var.ENVIRONMENT}-custom-vpc-nat-gateway"
     }  
   
 }
@@ -101,7 +101,7 @@ resource "aws_route_table" "custom-public" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-public-route"
+        Name = "${var.ENVIRONMENT}-custom-vpc-public-route"
     }  
   
 }
@@ -117,7 +117,7 @@ resource "aws_route_table" "custom-private" {
 
     tags ={
 
-        Name = "${Var.ENVIRONMENT}-custom-vpc-private-route"
+        Name = "${var.ENVIRONMENT}-custom-vpc-private-route"
     }  
   
 }
