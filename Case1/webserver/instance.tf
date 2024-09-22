@@ -97,8 +97,8 @@ resource "aws_lb" "custom-load-balancer" {
     internal = false
     name = "${var.ENVIRONMENT}-custom-lb"
     load_balancer_type = "application"
-    security_groups = []
-    subnets = ["${module.custom-vpc.public_subnet1_id}","${module.custom-vpc.public_subnet1_id}"]
+    security_groups = [aws_security_group.custom-alb-security.id]
+    subnets = ["${module.custom-vpc.public_subnet1_id}","${module.custom-vpc.public_subnet2_id}"]
   
 }
 
@@ -122,6 +122,7 @@ resource "aws_lb_listener" "webserver_listener" {
 }
 
 output "load_balancer" {
+    
     value = aws_lb.custom-load-balancer.dns_name
   
 }

@@ -31,12 +31,12 @@ variable "CUSTOM_RDS_ENGINE" {
 
 variable "CUSTOM_RDS_ENGINE_VERSION" {
     type = string
-    default = "8.0.20"
+    default = "8.0.34"
 }
 
 variable "DB_INSTANCE_CLASS" {
     type = string
-    default = "db.t2.micro"
+    default = "db.t3.micro"
 }
 
 variable "RDS_CIDR" {

@@ -2,3 +2,6 @@ levelup_key.pub
 levelup_key
 .terraform.lock.hcl
 .terraform/
+.terraform.tfstate.lock.info
+terraform.tfstate
+terraform.tfstate.backup
