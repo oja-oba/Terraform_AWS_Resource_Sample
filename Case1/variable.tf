@@ -1,3 +1,5 @@
+#Variable file for the main file
+
 variable "ENVIRONMENT" {
     type = string
     default = "development"

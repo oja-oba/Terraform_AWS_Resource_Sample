@@ -1,3 +1,5 @@
+#Variable declaration for the rds file
+
 variable "region" {
     type        = string
     default     = "us-east-2"

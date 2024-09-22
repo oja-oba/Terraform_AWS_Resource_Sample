@@ -1,3 +1,5 @@
+
+#Security group for the alb
 resource "aws_security_group" "custom-alb-security" {
     tags = {
       Name = "${var.ENVIRONMENT}-custom-alb-sg"

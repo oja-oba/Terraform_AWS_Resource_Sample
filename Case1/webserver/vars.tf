@@ -1,3 +1,5 @@
+#The variable declaration file for the instance and alb file
+
 variable "SSH_CIDR_WEB_SERVER" {
     type = string
     default = "0.0.0.0/0"

@@ -1,3 +1,5 @@
+#Variable declaration file for the VPC file
+
 variable "region" {
     type        = string
     default     = "us-east-2"

@@ -1,3 +1,8 @@
+#This file contain the database security, subnet group, database declaration with the endpoint of the datase #
+#as the ouputs
+
+
+#Module to import the VPC
 module "customvpc" {
     source = "../vpc"
     region = var.region
@@ -5,6 +10,8 @@ module "customvpc" {
   
 }
 
+
+#The database  subnet group resource 
 resource "aws_db_subnet_group" "custom-rds-subnet-group" {
     name = "${var.ENVIRONMENT}_custom_db_snet1"
     description = "Allowed subnet for db clusters"
@@ -16,6 +23,9 @@ resource "aws_db_subnet_group" "custom-rds-subnet-group" {
         Name = "${var.ENVIRONMENT}_custom_db_subnet"
     }
 }
+
+
+#The security group for the database
 
 resource "aws_security_group" "custom-rds-sg" {
 
@@ -44,6 +54,7 @@ resource "aws_security_group" "custom-rds-sg" {
   
 }
 
+#The database instance resource
 resource "aws_db_instance" "custom-rds" {
     identifier = "${var.ENVIRONMENT}-custom-rds"
     allocated_storage = var.CUSTOM_RDS_ALLOCATED_STORAGE
@@ -61,6 +72,8 @@ resource "aws_db_instance" "custom-rds" {
   
 }
 
+
+#Output of the database endpoint
 output "rds_prod_endpoint" {
     value = aws_db_instance.custom-rds.endpoint
   

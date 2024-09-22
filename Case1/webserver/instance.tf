@@ -1,3 +1,5 @@
+
+#The module for the VPC
 module "custom-vpc" {
     source = "../module/vpc"
     region = var.region
@@ -5,6 +7,7 @@ module "custom-vpc" {
   
 }
 
+#The module for the RDS
 module "custom-rds" {
     source = "../module/rds"
     region = var.region
@@ -12,6 +15,7 @@ module "custom-rds" {
   
 }
 
+#The security group for the webservers
 resource "aws_security_group" "custom-webservers-sg" {
 
     name = "${var.ENVIRONMENT}-levelup-rds-sg"
@@ -57,12 +61,15 @@ ingress {
   
 }
 
+#Key pair resource file
 resource "aws_key_pair" "custom_key" {
     key_name = "custom_key"
     public_key = file(var.public_key_path)
   
 }
 
+
+#The webserver lauch configuration 
 resource "aws_launch_configuration" "lauch-config-webservers" {
     name = "launch_config_webservers"
     user_data = "#!/bin/bash\napt-get update\napt-get -y install net-tools nginx\nMYIP=`ifconfig | grep -E '(inet 10)|(addr:10)' | awk '{ print $2 }' | cut -d ':' -f2`\necho 'Hello Team\nThis is my IP: '$MYIP > /var/www/html/index.html"
@@ -79,6 +86,7 @@ resource "aws_launch_configuration" "lauch-config-webservers" {
   
 }
 
+#The autoscaling group for the webserver
 resource "aws_autoscaling_group" "levelup_webserver" {
     name ="levelup_webservers"
     max_size = 2
@@ -93,6 +101,7 @@ resource "aws_autoscaling_group" "levelup_webserver" {
   
 }
 
+#The load balancer for the webserver
 resource "aws_lb" "custom-load-balancer" {
     internal = false
     name = "${var.ENVIRONMENT}-custom-lb"
@@ -102,6 +111,8 @@ resource "aws_lb" "custom-load-balancer" {
   
 }
 
+#The target group for the load balance
+
 resource "aws_lb_target_group" "load-balancer-target-group" {
     name ="load-balancer-target-group"
     port = 80
@@ -110,6 +121,7 @@ resource "aws_lb_target_group" "load-balancer-target-group" {
   
 }
 
+#The listener for the load balancer 
 resource "aws_lb_listener" "webserver_listener" {
     load_balancer_arn = aws_lb.custom-load-balancer.arn
     port = "80"
@@ -121,8 +133,10 @@ resource "aws_lb_listener" "webserver_listener" {
     }
 }
 
+
+#ouput of the load balancer dns name
 output "load_balancer" {
-    
+
     value = aws_lb.custom-load-balancer.dns_name
   
 }
