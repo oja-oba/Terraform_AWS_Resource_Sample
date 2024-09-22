@@ -5,5 +5,6 @@ provider "aws" {
 
 module "custom-vpc" {
 source = "./webserver"
+ENVIRONMENT = var.ENVIRONMENT
   
 }

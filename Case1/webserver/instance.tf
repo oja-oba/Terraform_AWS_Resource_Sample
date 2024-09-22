@@ -16,7 +16,7 @@ resource "aws_security_group" "custom-webservers-sg" {
 
     name = "${var.ENVIRONMENT}-levelup-rds-sg"
     description = "Created by custom"
-    vpc_id = module.custom-vpc.id
+    vpc_id = module.custom-vpc.my_vpc_id
 
     ingress {
         from_port = 22

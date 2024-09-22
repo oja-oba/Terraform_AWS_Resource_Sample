@@ -6,7 +6,7 @@ module "customvpc" {
 }
 
 resource "aws_db_subnet_group" "custom-rds-subnet-group" {
-    name = "${var.ENVIRONMENT}-custom-db-snet"
+    name = "${var.ENVIRONMENT}_custom_db_snet1"
     description = "Allowed subnet for db clusters"
     subnet_ids = [
         "${module.customvpc.private_subnet1_id}",
