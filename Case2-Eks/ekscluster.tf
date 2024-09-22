@@ -24,6 +24,7 @@ resource "aws_eks_node_group" "node" {
     node_group_name = "node_ore"
     node_role_arn = aws_iam_role.eks_nodes.arn
     subnet_ids = module.vpc.public_subnets
+    instance_types = ["t3.micro"]
   
 scaling_config {
   desired_size = 1
@@ -39,6 +40,6 @@ output "node-group" {
 }
 
 output "eks-name" {
-    
+
   value = aws_eks_cluster.aws_eks.name
 }
